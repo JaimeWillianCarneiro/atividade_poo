@@ -14,6 +14,10 @@ class Loja:
         self.funcionarios = [] # A loja agrega os funcionarios
         self.estoque = [] 
     
+    def __str__(self):
+        return f"Localização da Loja: {self.localizacao} \nNúmero de funcionários: {len(self.funcionarios)}\n"
+    def __repr__(self):
+        return f"{self.localizacao}"
     def adicionar_funcionario(self, funcionario):
         self.funcionarios.append(funcionario)
     
@@ -26,11 +30,19 @@ class Loja:
 class Funcionario:
     def __init__(self, nome_completo, cpf, salario, cargo):
         self.nome_completo = nome_completo
-        self.cpf = cpf
+        self._cpf = cpf #atributo privado
         self.salario = salario
         self.loja_atual = None
         self.cargo = cargo # Ver a hierarquia depois 
-
+    
+    def __str__(self):
+        if self.loja_atual:
+            return f"Nome completo: {self.nome_completo}, Cargo: {self.cargo}, Loja atual: {self.loja_atual.localizacao}"
+        else:
+            return f"Nome completo: {self.nome_completo}, Cargo: {self.cargo}"
+    def set_loja(self, loja):
+        self.loja_atual= loja
+        
 
 def TipoInstrumento(Enum):
     GUITARRA = "guitarra"
@@ -38,7 +50,7 @@ def TipoInstrumento(Enum):
     VIOLAO = "violão"
 
 class Instrumento:
-    opcoes_instrumentos = list(TipoInstrumento)
+    # opcoes_instrumentos = list(TipoInstrumento)
     
     def __init__(self, marca, modelo, preco, numero_cordas ):
         self.marca
@@ -69,8 +81,3 @@ class Violao(Instrumento):
 class Baixo(Instrumento):
     def __init__(self, marca, modelo, preco, numero_cordas):
         super().__init__(marca, modelo, preco, numero_cordas)
-    
-
-
-info_violao = ['marca': ]
-violao_1 = Instrumento()
