@@ -6,7 +6,6 @@ from enum import Enum
 """  
 * Há uma relação de AGREGAÇÃO entre Funcionario e Loja e Funcinario , 
 poois pode existir um funcionario independente da sua loja 
-
 """
 class Loja:
     def __init__(self, localizacao):
@@ -46,9 +45,31 @@ class Instrumento:
         self.preco
         self.numero_cordas
         self.modelo
-    
+        
 class Guitarra(Instrumento):
-    pass
+    
+    def __init__(self, marca, modelo, preco, numero_cordas):
+        super().__init__(marca, modelo, preco, numero_cordas)
+
+    def fazer_solo(self):
+        print("Executando o solo...")
+        print("Solos de guitarra não vão me conquistar...")
+    
+    
+class Violao(Instrumento):
+    
+    def __init__(self, marca, modelo, preco, numero_cordas):
+        super().__init__(marca, modelo, preco, numero_cordas)
+        self.afinado = False
+    
+    def afinar(self):
+        self.afinado = True
+        print("Afinando violão")
+    
+class Baixo(Instrumento):
+    def __init__(self, marca, modelo, preco, numero_cordas):
+        super().__init__(marca, modelo, preco, numero_cordas)
+    
 
 
 info_violao = ['marca': ]
