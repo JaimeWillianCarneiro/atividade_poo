@@ -3,6 +3,8 @@ Arquivo com as classes a serem construidas
 """
 from enum import Enum
 
+#  TODO
+#  Usar as Hierar
 """  
 * Há uma relação de AGREGAÇÃO entre Funcionario e Loja e Funcinario , 
 poois pode existir um funcionario independente da sua loja 
