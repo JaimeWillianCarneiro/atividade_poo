@@ -28,6 +28,5 @@ class Funcionario:
         self.cargo = cargo # Ver a hierarquia depois 
 
 class Instrumento:
-    
-    
+    pass
         
