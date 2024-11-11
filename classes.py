@@ -3,11 +3,13 @@ Arquivo com as classes a serem construidas
 """
 from enum import Enum
 
-#  TODO
-#  Usar as Hierar
+
 """  
 * Há uma relação de AGREGAÇÃO entre Funcionario e Loja e Funcinario , 
-poois pode existir um funcionario independente da sua loja 
+pois pode existir um funcionario independente da sua loja 
+* Há uma relação de COMPOSIÇÂO entre LOJA e INSTRUMENTO, um instrumento
+só existe se estiver associado a uma loja
+* Utilizei Herança entre Instrumento e as classes filhas Baixo, Violão e Guitarra 
 """
 class TipoInstrumento(Enum):
     GUITARRA = "guitarra"
