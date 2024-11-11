@@ -1,3 +1,4 @@
+"""Arquivos com exemplo de uso das classes criadas"""
 from classes import *
 
 loja_1 = Loja("Botafogo")

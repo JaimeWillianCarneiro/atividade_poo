@@ -3,7 +3,6 @@ Arquivo com as classes a serem construidas
 """
 from enum import Enum
 
-
 """  
 * Há uma relação de AGREGAÇÃO entre Funcionario e Loja e Funcinario , 
 pois pode existir um funcionario independente da sua loja 
@@ -18,7 +17,7 @@ class TipoInstrumento(Enum):
 
 
 class Loja:
-    def __init__(self, localizacao):
+    def __init__(self, localizacao: str):
         
         self.localizacao = localizacao
         self.funcionarios = [] # A loja agrega os funcionarios
@@ -34,14 +33,14 @@ class Loja:
     def __repr__(self):
         return f"{self.localizacao}"
     
-    def adicionar_funcionario(self, funcionario):
+    def adicionar_funcionario(self, funcionario) -> None:
         self.funcionarios.append(funcionario)
     
-    def remover_funcionario(self):
+    def remover_funcionario(self)-> None:
         #  removendo o último funcionário adicionado
         self.funcionarios.pop(-1)
     
-    def adicionar_instrumento(self, tipo_instrumento,  **kwargs):
+    def adicionar_instrumento(self, tipo_instrumento,  **kwargs)-> None:
         
         instrumento = None
         if tipo_instrumento == TipoInstrumento.GUITARRA:
@@ -55,31 +54,31 @@ class Loja:
             self.estoque.append(instrumento)
     
     
-    def remover_instrumento(self):
+    def remover_instrumento(self)-> None:
         #  removendo o ultimo funcionario
         self.estoque.pop(-1)
     
-    def get_estoque(self):
+    def get_estoque(self) -> list:
         return self.estoque
     
-    def consultar_estoque(self):
+    def consultar_estoque(self)-> str:
         estoque_str = "Lista de Instrumentos:\n--------------\n"
         
         for instrumento in self.get_estoque():
             estoque_str += f"{instrumento}\n"
         return estoque_str
      
-    def get_funcionarios(self):
+    def get_funcionarios(self)-> list:
         return self.funcionarios
     
-    def consultar_funcionarios(self):
+    def consultar_funcionarios(self)-> str:
         funcionarios_str = "Lista de funcionários:\n--------------\n"
         for funcionario in self.get_funcionarios():
             funcionarios_str += f"{funcionario}\n"
         
         return funcionarios_str
     
-    def set_loja_mais_proxima(self, loja_mais_proxima):
+    def set_loja_mais_proxima(self, loja_mais_proxima)-> None:
         self.loja_mais_perto = loja_mais_proxima.localizacao
 
 class Cargo(Enum):
@@ -91,7 +90,7 @@ class Cargo(Enum):
     DIRETOR = "Diretor"
     
 class Funcionario:
-    def __init__(self, nome_completo, cpf, salario, cargo):
+    def __init__(self, nome_completo:str, cpf:str, salario:float, cargo: Cargo):
         self.nome_completo = nome_completo
         self._cpf = cpf #atributo privado
         self.salario = salario
@@ -109,7 +108,7 @@ class Funcionario:
         else:
             return f"Nome completo: {self.nome_completo}, Cargo: {self.cargo.value}"
     
-    def set_loja(self, loja):
+    def set_loja(self, loja)-> None:
         self.loja_atual= loja
     
         
@@ -137,10 +136,10 @@ class Guitarra(Instrumento):
         else:
             return f"Guitarra: {super().__str__()}, Tem Ponte Floyd Rose: NÃO"
         
-    def fazer_solo(self):
+    def fazer_solo(self)-> str:
         # Minha criatividade se limita a isso aqui
-        print("Executando o solo...")
-        print("Solos de guitarra não vão me conquistar...")
+       
+        return f"Executando o solo...\nSolos de guitarra não vão me conquistar..."
     
     
 class Violao(Instrumento):
@@ -153,7 +152,7 @@ class Violao(Instrumento):
     def __str__(self):
         return f"Violão: {super().__str__()}, Afinado: {"SIM" if self.afinado else "NÃO"},Tipo de Madeira:  {self.tipo_madeira}"
     
-    def afinar(self):
+    def afinar(self)->None:
         self.afinado = True
         print("Afinando violão")
     
